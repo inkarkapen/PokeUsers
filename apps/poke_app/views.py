@@ -12,7 +12,6 @@ def index(request):
     context['user_pokes'] = context['pokes'].filter(poked = request.session['user'])
     context['other_users'] = context['user_pokes'].exclude(poked = request.session['user'])
     context['total'] = context['user_pokes'].count()
-    context['count'] = len(pokers)
     return render(request, 'poke_app/index.html', context)
 
 def create(request, id):
