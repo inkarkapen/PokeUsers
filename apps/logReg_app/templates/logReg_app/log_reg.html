@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Hey,traveler</title>
+    </head>
+    <body>
+        
+        <fieldset>
+            <legend>Register:</legend>
+            <form action="/main/signup" method = "post">
+                {% csrf_token %}
+                Name:<br>
+                <input type="text" name="name"></br>
+                Alias:<br>
+                <input type="text" name="alias"></br>
+                Email:<br>
+                <input type="email" name="email"></br>
+                Password:<br>
+                <input type="password" name="password"></br>
+                Re-enter password:<br>
+                <input type="password" name="r_password"></br>
+                Date of Birth:<br>
+                <input type="date" name="birth_day"></br>
+                <input type="submit" value="Register">
+            </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>Log In</legend>
+            <form action="/main/login" method = "post">
+                {% csrf_token %}
+                Email:<br>
+                <input type="text" name="email"></br>
+                Password:<br>
+                <input type="password" name="password"></br>
+                <input type="submit" value="Submit">
+            </form>
+        </fieldset>
+
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </body>
+</html>
